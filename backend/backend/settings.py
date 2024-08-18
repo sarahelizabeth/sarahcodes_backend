@@ -59,6 +59,8 @@ INSTALLED_APPS = [
     'django_filters',
     # Local
     'authentication',
+    'blog',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
