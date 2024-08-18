@@ -1,0 +1,110 @@
+.centered {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.triangle {
+  width: 0px;
+  height: 0px;
+  border-top: 30px solid transparent;
+  border-bottom: 30px solid transparent;
+  border-left: 30px solid black;
+  position: absolute;
+  left: 50%;
+}
+
+/* FONTS */
+
+.major-mono-display {
+  font-family: "Major Mono Display", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.rubik {
+  font-family: "Rubik", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 800;
+  font-style: normal;
+  font-size: 40px;
+}
+
+.rubik-glitch {
+  font-family: "Rubik Glitch", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+}
+
+.press-start-2p {
+  font-family: "Press Start 2P", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 30px;
+  line-height: 38px;
+}
+
+.knewave {
+  font-family: "Knewave", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+}
+
+.knewave-selected {
+  font-family: "Knewave", system-ui;
+  font-weight: 400;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  color: black;
+  font-size: 40px;
+}
+
+@font-face {
+  font-family: 'Corrupted File';
+  src: url('../assets/Corrupted_File.ttf');
+}
+
+.corrupted-file {
+  font-family: 'Corrupted File', sans-serif;
+  font-size: 38px;
+  line-height: 38px;
+}
+
+/* MEDIA QUERIES */
+@media (max-width: 768px) {
+  .triangle {
+    display: none !important;
+  }
+
+  .major-mono-display {
+    font-size: 25px;
+  }
+
+  .rubik {
+    font-size: 14px;
+  }
+
+  .rubik-glitch {
+    font-size: 14px;
+  }
+
+  .press-start-2p {
+    font-size: 12px;
+    line-height: 12px;
+  }
+
+  .knewave {
+    font-size: 14px;
+  }
+
+  .knewave-selected {
+    font-size: 14px;
+  }
+
+  .corrupted-file {
+    font-size: 12px;
+    line-height: 12px;
+  }
+}
