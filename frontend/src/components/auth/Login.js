@@ -8,7 +8,6 @@ import API from '../../api';
 const Login = ({ isOpen, handleClose }) => {
   const form = useRef();
   const [formValue, setFormValue] = useState({
-    username: '',
     email: '',
     password: '',
   });
@@ -26,7 +25,7 @@ const Login = ({ isOpen, handleClose }) => {
     }
 
     const user = {
-      username: formValue.email,
+      email: formValue.email,
       password: formValue.password,
     };
 
@@ -34,7 +33,7 @@ const Login = ({ isOpen, handleClose }) => {
       .then((res) => {
         console.log(res.data);
         const oneHour = 1 / 24;
-        Cookies.set('token', res.data.access, { expires: 7 });
+        Cookies.set('access_token', res.data.access, { expires: 7 });
         Cookies.set('refresh_token', res.data.refresh, { expires: oneHour });
         localStorage.setItem('user', JSON.stringify(res.data.user));
         handleClose();

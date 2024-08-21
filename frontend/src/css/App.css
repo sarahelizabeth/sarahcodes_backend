@@ -14,6 +14,40 @@
   left: 50%;
 }
 
+#main-nav > a {
+  color: white;
+  text-decoration: none;
+}
+
+#main-nav > a#developer:hover {
+  font-family: 'Corrupted File', sans-serif;
+  font-size: 38px;
+  line-height: 38px;
+}
+
+#main-nav > a#mentor:hover {
+  font-family: "Knewave", system-ui;
+  font-weight: 400;
+  -webkit-text-stroke-width: 1px;
+  -webkit-text-stroke-color: white;
+  color: black;
+  font-size: 40px;
+}
+
+#main-nav > a#activist:hover {
+  font-family: "Rubik Glitch", system-ui;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 40px;
+}
+
+.button-shadow-white:hover {
+  -webkit-box-shadow: 4px 4px 0px 0px white;
+  -moz-box-shadow: 4px 4px 0px 0px white;
+  box-shadow: 4px 4px 0px 0px white;
+  outline: 2px solid black;
+}
+
 /* FONTS */
 
 .major-mono-display {
@@ -59,6 +93,12 @@
   -webkit-text-stroke-color: white;
   color: black;
   font-size: 40px;
+}
+
+.contrail-one {
+  font-family: "Contrail One", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 @font-face {

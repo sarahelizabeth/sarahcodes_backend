@@ -1,12 +1,16 @@
 import React from 'react';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
+// import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { Button, CustomProvider, Container } from 'rsuite';
 import 'rsuite/dist/rsuite.min.css';
 import './css/App.css';
 
 import { NavSidebar } from './components/NavSidebar';
 import MainPage from './pages/MainPage';
+import Intro from './components/main/Intro';
 import Developer from './components/main/Developer';
+import Mentor from './components/main/Mentor';
+import Activist from './components/main/Activist';
 import AMAPage from './pages/AMAPage';
 
 const router = createBrowserRouter([
@@ -15,9 +19,21 @@ const router = createBrowserRouter([
     element: <MainPage />,
     children: [
       {
+        index: true,
+        element: <Intro />,
+      },
+      {
         path: 'developer',
         element: <Developer />,
       },
+      {
+        path: 'mentor',
+        element: <Mentor />,
+      },
+      {
+        path: 'activist',
+        element: <Activist />
+      }
     ],
   },
   {

@@ -10,7 +10,6 @@ const Register = ({ isOpen, handleClose }) => {
   const [formValue, setFormValue] = useState({
     first_name: '',
     last_name: '',
-    username: '',
     email: '',
     password1: '',
     password2: '',
@@ -33,7 +32,7 @@ const Register = ({ isOpen, handleClose }) => {
   const setCookies = (response) => {
     console.log(response);
     const oneHour = 1 / 24;
-    Cookies.set('token', response.access, { expires: 7 });
+    Cookies.set('access_token', response.access, { expires: 7 });
     Cookies.set('refresh_token', response.refresh, { expires: oneHour });
     localStorage.setItem('user', JSON.stringify(response.user));
   };
@@ -43,8 +42,6 @@ const Register = ({ isOpen, handleClose }) => {
       console.error('Form Error');
       return;
     }
-
-    formValue['username'] = formValue.email;
 
     // const registerData = register(formValue);
     // console.log(registerData);
@@ -59,7 +56,7 @@ const Register = ({ isOpen, handleClose }) => {
       .then((res) => {
         console.log(res);
         const user = {
-          username: res.username,
+          email: res.email,
           password: formValue.password1,
         };
         API.post(`api/auth/login/`, user)
@@ -86,6 +83,10 @@ const Register = ({ isOpen, handleClose }) => {
         <Modal.Title>Sign Up</Modal.Title>
       </Modal.Header>
       <Modal.Body>
+        <p>
+          I will never send you any annoying emails (except for an email update when I've answered your question) and your data will
+          never be used for any reason (except for stalking purposes).
+        </p>
         <Form fluid ref={form} model={model} onChange={setFormValue} formValue={formValue}>
           <Form.Group controlId='first-name'>
             <Form.ControlLabel>First Name</Form.ControlLabel>

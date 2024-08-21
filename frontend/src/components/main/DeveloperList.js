@@ -9,15 +9,15 @@ const DeveloperList = ({ projects }) => {
 
   return (
     <>
-      {projects.map(({ image, title, description, tools }, index) => (
-        <>
-          <div key={index} className='flex mb-6'>
+      {projects.map(({ image, logo, title, description, tools }, index) => (
+        <div key={index}>
+          <div className='flex mb-6'>
             <div
               className='w-32 h-32 imageContainer relative h-full'
               onMouseOver={() => setHover(index)}
               onMouseLeave={() => setHover(null)}
             >
-              <img className='w-32 h-32 object-contain' src={image} />
+              <img className='w-32 h-32 object-contain' src={logo} />
               {hover == index && (
                 <div className='bg-gray-100 absolute top-0 left-0 w-full h-full'>
                   <Button
@@ -67,7 +67,7 @@ const DeveloperList = ({ projects }) => {
             </Modal.Footer>
           </Modal>
           <Divider />
-        </>
+        </div>
       ))}
     </>
   );

@@ -7,7 +7,7 @@ const Mentor = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    API.get(`api/projects/?project_type=mentor`).then((res) => {
+    API.get(`api/portfolio/projects/?project_type=mentor`).then((res) => {
       setProjects(res.data);
     });
   }, []);

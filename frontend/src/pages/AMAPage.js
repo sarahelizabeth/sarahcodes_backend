@@ -57,25 +57,33 @@ const AMAPage = () => {
     if (user) {
       setUser(user);
     }
-  }, [setOpenLogin, setOpenRegister]);
+  }, [openLogin, openRegister]);
 
   return (
     <>
       <section className='w-screen h-screen grid grid-rows-4 md:grid-cols-2'>
         <div className='w-full h-full md:h-screen row-span-1 centered flex-row md:flex-col sticky top-0 overflow-hidden bg-black text-white'>
-          <p>ask me anything</p>
-          {user == null ? (
-            <>
-              <Button size='sm' variant='primary' onClick={() => setOpenRegister(true)}>
-                Sign Up
-              </Button>
-              <Button size='sm' variant='primary' onClick={() => setOpenLogin(true)}>
-                Log In
-              </Button>
-            </>
-          ) : (
-            <QuestionForm user={user} submitQuestion={handleSuccess} />
-          )}
+          <div className='w-2/3'>
+            <h1 className='knewave text-white text-center'>Ask Me Anything!</h1>
+            {user == null ? (
+              <>
+                <p className='py-2'>Sign up or log in to ask me a question or leave a comment!</p>
+                <Button size='sm' variant='primary' onClick={() => setOpenRegister(true)}>
+                  Sign Up
+                </Button>
+                <Button size='sm' variant='primary' onClick={() => setOpenLogin(true)}>
+                  Log In
+                </Button>
+              </>
+            ) : (
+              <>
+                <p className='mt-5 mb-3 px-10 mb-2 text-justify text-xs'>
+                  Enter your query below and you will receive an email notification as soon as I answer it!
+                </p>
+                <QuestionForm user={user} submitQuestion={handleSuccess} />
+              </>
+            )}
+          </div>
         </div>
         <div className='w-full h-full md:h-screen row-span-3 overflow-y-scroll p-20'>
           <Questions questions={questions} />

@@ -13,13 +13,13 @@ class Experience(models.Model):
     return self.name
   
 def get_file_path_image(instance, filename):
-    filename_clean = filename.replace('_', ' ')
-    return os.path.join(
-      'projects',
-      instance.project_type,
-      'images',
-      filename_clean
-    )
+  filename_clean = filename.replace('_', ' ')
+  return os.path.join(
+    'projects',
+    instance.project_type,
+    'images',
+    filename_clean
+  )
   
 def get_file_path_logo(instance, filename):
   filename_clean = filename.replace('_', ' ')

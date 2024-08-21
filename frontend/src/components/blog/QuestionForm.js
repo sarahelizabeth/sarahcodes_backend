@@ -29,7 +29,7 @@ const QuestionForm = ({ user, submitQuestion }) => {
   };
 
   return (
-    <div className='question-box'>
+    <div className='question-box px-8 grid place-items-center'>
       <Input
         value={input}
         onChange={(value) => setInput(value)}
@@ -37,9 +37,9 @@ const QuestionForm = ({ user, submitQuestion }) => {
         rows={4}
         placeholder='Enter your question here...'
       />
-      <Button onClick={handleSubmit} appearance='primary' type='submit'>
+      <button className='button-shadow-white border-2 border-white px-4 py-2 uppercase mt-6' onClick={handleSubmit} type='submit'>
         Submit
-      </Button>
+      </button>
     </div>
   );
 };

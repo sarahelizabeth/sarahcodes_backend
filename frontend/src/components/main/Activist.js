@@ -7,7 +7,7 @@ const Activist = () => {
   const [projects, setProjects] = useState([]);
 
   useEffect(() => {
-    API.get(`api/projects/?project_type=activist`).then((res) => {
+    API.get(`api/portfolio/projects/?project_type=activist`).then((res) => {
       setProjects(res.data);
     });
   }, []);

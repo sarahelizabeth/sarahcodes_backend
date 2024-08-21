@@ -1,18 +1,23 @@
+from dj_rest_auth.serializers import UserDetailsSerializer
 from rest_framework import serializers
 
 from .models import Question, Answer, Comment
 
-class QuestionSerializer(serializers.ModelSerializer):
-  # author = UserSerializer(many=False)
-  
-  class Meta:
-    model = Question
-    fields = ('body', 'author', 'created_at',)
-
 class AnswerSerializer(serializers.ModelSerializer):
   class Meta:
     model = Answer
-    fields = ('question', 'body', 'created_at',)
+    fields = ('body', 'created_at',)
+
+class QuestionSerializer(serializers.ModelSerializer):
+  answer = serializers.PrimaryKeyRelatedField(read_only=True)
+  class Meta:
+    model = Question
+    fields = ('body', 'author', 'created_at', 'answer',)
+
+  def to_representation(self, instance):
+    representation = super().to_representation(instance)
+    representation['author'] = UserDetailsSerializer(instance.author, many=False).data
+    return representation
 
 class CommentSerializer(serializers.ModelSerializer):
   class Meta:
