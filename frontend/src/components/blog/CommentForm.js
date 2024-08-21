@@ -1,9 +1,9 @@
 import React, { useContext, useState } from 'react';
-import { UserContext } from '../../App';
 import { Input } from 'rsuite';
 import API from '../../api';
+import { UserContext } from '../../App';
 
-const QuestionForm = ({ submitQuestion }) => {
+const CommentForm = ({ questionId, submitComment }) => {
   const user = useContext(UserContext);
   const [input, setInput] = useState('');
 
@@ -16,30 +16,32 @@ const QuestionForm = ({ submitQuestion }) => {
     const questionValue = {
       body: input,
       author: user.pk,
+      question: questionId,
     };
 
-    API.post(`api/blog/questions/`, questionValue)
+    API.post(`api/blog/comments/`, questionValue)
       .then((res) => {
         console.log(res.data);
         setInput('');
-        submitQuestion();
+        submitComment();
       })
       .catch((error) => {
-        console.error('question error: ', error);
+        console.error('comment error: ', error);
       });
   };
 
   return (
-    <div className='question-box px-8 grid place-items-center'>
+    <div className='comment-form mt-4 flex flex-col w-full'>
       <Input
         value={input}
         onChange={(value) => setInput(value)}
         as='textarea'
-        rows={4}
-        placeholder='Enter your question here...'
+        rows={2}
+        placeholder='Enter your comment here...'
+        className='self-stretch'
       />
       <button
-        className='button-shadow-white border-2 border-white px-4 py-2 uppercase mt-6 hover:font-bold'
+        className='button-shadow-black hover:font-bold border-2 border-black px-4 py-2 uppercase mt-2 place-self-end'
         onClick={handleSubmit}
         type='submit'
       >
@@ -47,6 +49,6 @@ const QuestionForm = ({ submitQuestion }) => {
       </button>
     </div>
   );
-};
+}
 
-export default QuestionForm;
+export default CommentForm

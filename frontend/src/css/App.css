@@ -48,7 +48,32 @@
   outline: 2px solid black;
 }
 
+.button-shadow-black:hover {
+  -webkit-box-shadow: 4px 4px 0px 0px black;
+  -moz-box-shadow: 4px 4px 0px 0px black;
+  box-shadow: 4px 4px 0px 0px black;
+  outline: 2px solid white;
+}
+
+.toaster-shadow-white {
+  -webkit-box-shadow: 4px 4px 0px 0px white !important;
+  -moz-box-shadow: 4px 4px 0px 0px white !important;
+  box-shadow: 4px 4px 0px 0px white !important;
+  outline: 2px solid black !important;
+}
+
+.stack-grid > span {
+  width: fit-content;
+}
+
 /* FONTS */
+
+.jetbrains-mono {
+  font-family: 'JetBrains Mono', monospace;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
+}
 
 .major-mono-display {
   font-family: "Major Mono Display", monospace;

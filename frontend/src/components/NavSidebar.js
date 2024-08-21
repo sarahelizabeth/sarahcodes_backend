@@ -1,13 +1,13 @@
-import { useRef } from 'react';
+import { useContext, useRef } from 'react';
 import { motion, useCycle } from 'framer-motion';
 import { useDimensions } from './navigation/useDimensions';
 import { NavToggle } from './navigation/NavToggle';
 import { Navigation } from './navigation/Navigation';
-import { Button } from 'rsuite';
 import API from '../api';
 import Cookies from 'js-cookie';
 
 import '../css/navigation.css';
+import { UserContext } from '../App';
 
 const sidebar = {
   open: (height = 1000) => ({
@@ -45,26 +45,29 @@ const variants2 = {
   },
 };
 
-const handleLogout = () => {
-  const token = Cookies.get('token');
-  API.post(`api/auth/logout/`, {
-    headers: { Authorization: `Bearer ${token}` },
-  })
-    .then((response) => {
-      console.log(response.data);
-      localStorage.removeItem('user');
-      Cookies.remove('token');
-      Cookies.remove('refresh_token');
-    })
-    .catch((error) => {
-      console.error('logout error: ', error);
-    });
-};
-
 export const NavSidebar = () => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
+  const userContext = useContext(UserContext);
+
+  const handleLogout = () => {
+    const token = Cookies.get('token');
+    API.post(`api/auth/logout/`, {
+      headers: { Authorization: `Bearer ${token}` },
+    })
+      .then((response) => {
+        console.log(response.data);
+        Cookies.remove('token');
+        Cookies.remove('refresh_token');
+        localStorage.removeItem('user');
+        userContext.setUser(null);
+        toggleOpen();
+      })
+      .catch((error) => {
+        console.error('logout error: ', error);
+      });
+  };
 
   return (
     <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>

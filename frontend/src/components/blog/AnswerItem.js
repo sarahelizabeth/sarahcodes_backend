@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import API from '../../api';
 
-const AnswerItem = ({ answer }) => {
+const AnswerItem = ({ answerId }) => {
   const [answerData, setAnswerData] = useState({
     body: '',
     date: '',
     time: '',
   });
   useEffect(() => {
-    API.get(`/api/blog/answers/${answer.toString()}/`)
+    API.get(`/api/blog/answers/${answerId.toString()}/`)
       .then((res) => {
         const date = new Date(res.data.created_at).toLocaleDateString();
         const time = new Date(res.data.created_at).toLocaleTimeString();

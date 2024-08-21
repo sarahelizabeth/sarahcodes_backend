@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCycle } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const MainPage = () => {
@@ -23,27 +23,22 @@ const MainPage = () => {
           <NavLink
             id='developer'
             to='/developer'
-            className={({ isActive }) => [
-              isActive ? 'corrupted-file' : 'press-start-2p',
-              'my-3'
-            ].join(' ')}
+            className={({ isActive }) => [isActive ? 'corrupted-file' : 'press-start-2p', 'my-3'].join(' ')}
           >
             DEVELOPER
           </NavLink>
           <NavLink
             id='mentor'
             to='/mentor'
-            className={({ isActive }) => [
-              isActive ? 'knewave-selected' : 'knewave',
-              'my-3'
-            ].join(' ')}
+            className={({ isActive }) => [isActive ? 'knewave-selected' : 'knewave', 'my-3'].join(' ')}
           >
             MENTOR
           </NavLink>
-          <NavLink id='activist' to='/activist' className={({ isActive }) => [
-            isActive ? 'rubik-glitch' : 'rubik',
-            'my-3'
-          ].join(' ')}>
+          <NavLink
+            id='activist'
+            to='/activist'
+            className={({ isActive }) => [isActive ? 'rubik-glitch' : 'rubik', 'my-3'].join(' ')}
+          >
             ACTIVIST
           </NavLink>
         </div>

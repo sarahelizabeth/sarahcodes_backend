@@ -8,18 +8,25 @@ class AnswerSerializer(serializers.ModelSerializer):
     model = Answer
     fields = ('body', 'created_at',)
 
-class QuestionSerializer(serializers.ModelSerializer):
-  answer = serializers.PrimaryKeyRelatedField(read_only=True)
+class CommentSerializer(serializers.ModelSerializer):
   class Meta:
-    model = Question
-    fields = ('body', 'author', 'created_at', 'answer',)
+    model = Comment
+    fields = ('question', 'body', 'author', 'created_at',)
 
   def to_representation(self, instance):
     representation = super().to_representation(instance)
     representation['author'] = UserDetailsSerializer(instance.author, many=False).data
     return representation
 
-class CommentSerializer(serializers.ModelSerializer):
+class QuestionSerializer(serializers.ModelSerializer):
+  answer = serializers.PrimaryKeyRelatedField(read_only=True)
+  comments = serializers.PrimaryKeyRelatedField(many=True, read_only=True)
   class Meta:
-    model = Comment
-    fields = ('question', 'body', 'author', 'created_at',)
+    model = Question
+    fields = ('pk', 'body', 'author', 'created_at', 'answer', 'comments',)
+
+  def to_representation(self, instance):
+    representation = super().to_representation(instance)
+    representation['author'] = UserDetailsSerializer(instance.author, many=False).data
+    return representation
+  

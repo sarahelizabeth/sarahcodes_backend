@@ -1,11 +1,12 @@
-import React from 'react';
-import { useState, useRef } from 'react';
+import React, { useState, useRef, useContext } from 'react';
+import { UserContext } from '../../App';
 import { Button, ButtonToolbar, Modal, Form, Schema } from 'rsuite';
 import Cookies from 'js-cookie';
 import API from '../../api';
 // import { login } from './apiCalls';
 
 const Login = ({ isOpen, handleClose }) => {
+  const userContext = useContext(UserContext);
   const form = useRef();
   const [formValue, setFormValue] = useState({
     email: '',
@@ -24,18 +25,19 @@ const Login = ({ isOpen, handleClose }) => {
       return;
     }
 
-    const user = {
+    const newUser = {
       email: formValue.email,
       password: formValue.password,
     };
 
-    API.post(`api/auth/login/`, user)
+    API.post(`api/auth/login/`, newUser)
       .then((res) => {
         console.log(res.data);
         const oneHour = 1 / 24;
         Cookies.set('access_token', res.data.access, { expires: 7 });
         Cookies.set('refresh_token', res.data.refresh, { expires: oneHour });
         localStorage.setItem('user', JSON.stringify(res.data.user));
+        userContext.setUser(res.data.user);
         handleClose();
       })
       .catch((error) => {

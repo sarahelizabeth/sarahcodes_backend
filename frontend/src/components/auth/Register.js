@@ -5,7 +5,7 @@ import API from '../../api';
 // import { register } from './apiCalls';
 import Cookies from 'js-cookie';
 
-const Register = ({ isOpen, handleClose }) => {
+const Register = ({ isOpen, handleClose, handleSuccess }) => {
   const form = useRef();
   const [formValue, setFormValue] = useState({
     first_name: '',
@@ -63,7 +63,7 @@ const Register = ({ isOpen, handleClose }) => {
           .then((res) => {
             console.log(res.data);
             setCookies(res.data);
-            handleClose();
+            handleSuccess(res.data);
             return res.data;
           })
           .catch((error) => {
