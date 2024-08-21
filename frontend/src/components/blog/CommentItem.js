@@ -30,7 +30,7 @@ const CommentItem = ({ commentId }) => {
   }, []);
 
   return (
-    <p>
+    <p className='py-3'>
       FROM {comment.first_name} on {comment.date} at {comment.time}: {comment.body}
     </p>
   );

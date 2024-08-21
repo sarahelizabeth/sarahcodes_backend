@@ -17,15 +17,13 @@ const Questions = ({ submitComment }) => {
   const containerRef = useRef(null);
   const [showForm, setShowForm] = useState(-1);
   const [showComments, setShowComments] = useState(-1);
-  const [showWarning, setShowWarning] = useState(-1);
   const toaster = useToaster();
 
   const handleShowComments = (index, len) => {
-    if (len === 0) {
-      return;
-    }
+    if (len === 0) return;
+    if (index === showComments) setShowComments(-1);
+    else setShowComments(index);
     setShowForm(-1);
-    setShowComments(index);
   };
 
   const handleShowForm = (index) => {
@@ -33,8 +31,15 @@ const Questions = ({ submitComment }) => {
       handleShowWarning();
       return;
     }
+    if (index === showForm) setShowForm(-1);
+    else setShowForm(index);
     setShowComments(-1);
-    setShowForm(index);
+  };
+
+  const handleSubmitComment = (index) => {
+    setShowForm(-1);
+    submitComment();
+    setShowComments(index);
   };
 
   const handleShowWarning = () => {
@@ -42,12 +47,6 @@ const Questions = ({ submitComment }) => {
     setTimeout(() => {
       toaster.clear();
     }, 3000);
-  };
-
-  const handleSubmitComment = (index) => {
-    setShowForm(-1);
-    submitComment();
-    setShowComments(index);
   };
 
   const warning = (
@@ -82,7 +81,7 @@ const Questions = ({ submitComment }) => {
                     <CommentItem commentId={comment} />
                   </div>
                 ))}
-              {(showForm === index) && <CommentForm questionId={question.pk} ref={containerRef} submitComment={() => handleSubmitComment(index)}/>}
+              {(showForm === index) && <CommentForm questionId={question.pk} submitComment={() => handleSubmitComment(index)}/>}
             </div>
           </div>
           <Divider />

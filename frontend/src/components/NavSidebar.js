@@ -52,13 +52,12 @@ export const NavSidebar = () => {
   const userContext = useContext(UserContext);
 
   const handleLogout = () => {
-    const token = Cookies.get('token');
+    const access_token = Cookies.get('access_token');
     API.post(`api/auth/logout/`, {
-      headers: { Authorization: `Bearer ${token}` },
+      headers: { Authorization: `Bearer ${access_token}` },
     })
       .then((response) => {
-        console.log(response.data);
-        Cookies.remove('token');
+        Cookies.remove('access_token');
         Cookies.remove('refresh_token');
         localStorage.removeItem('user');
         userContext.setUser(null);

@@ -37,11 +37,7 @@ class CustomRegisterSerializer(serializers.Serializer):
     return data
 
   def custom_signup(self, request, user):
-    first = request.POST.get("first_name")
-    last = request.POST.get("last_name")
-    user.first_name = first
-    user.last_name = last
-    user.save()
+    pass
 
   def get_cleaned_data(self):
     return {

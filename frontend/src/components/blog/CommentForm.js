@@ -13,13 +13,13 @@ const CommentForm = ({ questionId, submitComment }) => {
       return;
     }
 
-    const questionValue = {
+    const commentValue = {
       body: input,
       author: user.pk,
       question: questionId,
     };
 
-    API.post(`api/blog/comments/`, questionValue)
+    API.post(`api/blog/comments/`, commentValue)
       .then((res) => {
         console.log(res.data);
         setInput('');

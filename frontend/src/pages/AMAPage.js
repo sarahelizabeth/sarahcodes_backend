@@ -8,7 +8,7 @@ export const QuestionsContext = createContext(null);
 
 const AMAPage = ({ handleOpenRegister, handleOpenLogin }) => {
   const userContext = useContext(UserContext);
-  console.log(userContext);
+  // replace with useMemo!!!!!!
   const [questions, setQuestions] = useState([]);
   const [questionSubmitted, setQuestionSubmitted] = useState(false);
   const [commentSubmitted, setCommentSubmitted] = useState(false);

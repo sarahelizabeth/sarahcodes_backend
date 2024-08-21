@@ -1,15 +1,14 @@
-import React from 'react';
-import { useState, useRef } from 'react';
+import React, { useContext, useState, useRef } from 'react';
 import { Button, ButtonToolbar, Modal, Form, Schema } from 'rsuite';
 import API from '../../api';
-// import { register } from './apiCalls';
 import Cookies from 'js-cookie';
+import { UserContext } from '../../App';
 
-const Register = ({ isOpen, handleClose, handleSuccess }) => {
+const Register = ({ isOpen, handleClose }) => {
   const form = useRef();
+  const userContext = useContext(UserContext);
   const [formValue, setFormValue] = useState({
     first_name: '',
-    last_name: '',
     email: '',
     password1: '',
     password2: '',
@@ -43,10 +42,6 @@ const Register = ({ isOpen, handleClose, handleSuccess }) => {
       return;
     }
 
-    // const registerData = register(formValue);
-    // console.log(registerData);
-    // const loginResponse = login()
-    // let promise = new Promise(() => {
     API.post(`api/auth/register/`, formValue)
       .then((res) => {
         console.log(res.data);
@@ -59,12 +54,14 @@ const Register = ({ isOpen, handleClose, handleSuccess }) => {
           email: res.email,
           password: formValue.password1,
         };
+        // abstract away this function and fucking figure out
+        // how to do fucking promise calls!!!!!!
         API.post(`api/auth/login/`, user)
           .then((res) => {
             console.log(res.data);
             setCookies(res.data);
-            handleSuccess(res.data);
-            return res.data;
+            userContext.setUser(res.data);
+            handleClose();
           })
           .catch((error) => {
             console.error('login error: ', error);
@@ -74,7 +71,6 @@ const Register = ({ isOpen, handleClose, handleSuccess }) => {
       .catch((error) => {
         console.error('register error: ', error);
       });
-    // });
   };
 
   return (
