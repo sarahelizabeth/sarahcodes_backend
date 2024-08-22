@@ -67,7 +67,7 @@ function App() {
   return (
     <UserContext.Provider value={context}>
       <NavSidebar />
-      <div className='w-full absolute z-10 top-0 flex items-center justify-center'>
+      <div className='w-full absolute z-10 top-4 md:top-0 flex items-center justify-center'>
         <h5 className='major-mono-display text-5xl pl-6 pt-3'>
           <span className='text-white'>sARAH</span> <span className='text-white md:text-black'>MuRRAy</span>
         </h5>

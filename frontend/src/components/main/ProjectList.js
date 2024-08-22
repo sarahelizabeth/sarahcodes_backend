@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Button, Divider } from 'rsuite';
 import ProjectModal from './ProjectModal';
 
-const DeveloperList = ({ projects }) => {
+const ProjectList = ({ projects }) => {
   const [hover, setHover] = useState(null);
   const [open, setOpen] = useState(null);
 
@@ -10,21 +10,22 @@ const DeveloperList = ({ projects }) => {
     <>
       {projects.map((project, index) => (
         <div key={index}>
-          <div className='flex mb-6'>
+          <div className='grid grid-cols-4 mb-6'>
             <div
-              className='w-32 h-32 imageContainer relative h-full'
+              className='imageContainer relative'
               onMouseOver={() => setHover(index)}
               onMouseLeave={() => setHover(null)}
             >
-              <img className='w-32 h-32 object-cover' src={project.logo} />
+              <img className='object-cover' src={project.logo} />
               {hover == index && (
-                <div className='bg-gray-100 absolute top-0 left-0 w-full h-full'>
+                <div className='bg-gray-100 opacity-55 absolute top-0 left-0 w-full h-full'>
                   <Button
                     size='sm'
                     style={{
                       position: 'relative',
-                      top: '45px',
-                      left: '15px',
+                      top: '35%',
+                      left: '0',
+                      opactiy: '1',
                     }}
                     variant='primary'
                     onClick={() => setOpen(index)}
@@ -34,12 +35,12 @@ const DeveloperList = ({ projects }) => {
                 </div>
               )}
             </div>
-            <div className='pl-5 flex flex-col h-32'>
-              <p>{project.title}</p>
-              <p className='grow'>{project.description}</p>
-              <div className='tag-container'>
-                {project.tools.map((tool, index) => (
-                  <span key={index} className='bg-gray-100 rounded-full px-3 py-1 text-sm font-semibold text-gray-600'>
+            <div className='col-span-3 pl-5 flex flex-col'>
+              <button className='text-lg text-left hover:underline hover:underline-offset-4' onClick={() => setOpen(index)}>{project.title}</button>
+              <p className='grow truncate text-sm pt-1'>{project.description}</p>
+              <div className='tag-container flex flex-wrap gap-2 w-full'>
+                {project.tools.slice(0, 4).map((tool, index) => (
+                  <span key={index} className='bg-gray-100 text-xs rounded-full px-3 py-1 text-sm font-semibold text-gray-600'>
                     {tool}
                   </span>
                 ))}
@@ -54,4 +55,4 @@ const DeveloperList = ({ projects }) => {
   );
 };
 
-export default DeveloperList;
+export default ProjectList;

@@ -1,7 +1,7 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
 import API from '../../api';
-import ActivistList from './ActivistList';
+import ProjectList from './ProjectList';
 
 const Activist = () => {
   const [projects, setProjects] = useState([]);
@@ -14,12 +14,12 @@ const Activist = () => {
 
   return (
     <>
-      <div className='mb-6'>
+      <div className='mt-1 md:mt-4 mb-8'>
         <h6 className='mb-2'>PERSONAL STATEMENT</h6>
-        <p>This is my personal statement for the developer page.</p>
+        <p>This is my personal statement for the activist page.</p>
       </div>
       <h6 className='mb-3'>PROJECTS</h6>
-      <ActivistList projects={projects} />
+      <ProjectList projects={projects} />
     </>
   );
 };

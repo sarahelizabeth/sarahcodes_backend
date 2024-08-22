@@ -30,7 +30,7 @@ const QuestionForm = ({ submitQuestion }) => {
   };
 
   return (
-    <div className='question-box px-8 grid place-items-center'>
+    <div className='question-box md:px-8 grid place-items-center'>
       <Input
         value={input}
         onChange={(value) => setInput(value)}
@@ -39,7 +39,7 @@ const QuestionForm = ({ submitQuestion }) => {
         placeholder='Enter your question here...'
       />
       <button
-        className='button-shadow-white border-2 border-white px-4 py-2 uppercase mt-6 hover:font-bold'
+        className='button-shadow-white border-2 border-white px-4 py-2 uppercase mt-2 mb-4 md:mt-6 hover:font-bold'
         onClick={handleSubmit}
         type='submit'
       >

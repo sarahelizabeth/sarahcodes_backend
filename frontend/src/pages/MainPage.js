@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useCycle } from 'react';
+import React, { useEffect, useState } from 'react';
 import { NavLink, Outlet, useLocation } from 'react-router-dom';
 
 const MainPage = () => {
@@ -18,7 +18,7 @@ const MainPage = () => {
         <span className={`triangle z-100 top-[25rem] ${selected === '/activist' ? 'md:block' : 'hidden'}`}></span>
         <div
           id='main-nav'
-          className='w-full h-full md:h-screen row-span-1 centered flex-row md:flex-col sticky top-0 overflow-hidden bg-black text-white'
+          className='w-full h-full md:h-screen gap-8 md:gap-0 pb-3 row-span-1 centered flex-row md:flex-col sticky top-0 overflow-hidden bg-black text-white'
         >
           <NavLink
             id='developer'
@@ -42,7 +42,7 @@ const MainPage = () => {
             ACTIVIST
           </NavLink>
         </div>
-        <div className='w-full h-full md:h-screen row-span-3 overflow-y-scroll p-20'>
+        <div className='w-full h-full md:h-screen row-span-3 overflow-y-scroll p-6 md:p-20'>
           <Outlet />
         </div>
       </section>

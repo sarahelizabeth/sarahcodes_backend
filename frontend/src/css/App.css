@@ -138,13 +138,19 @@
 }
 
 /* MEDIA QUERIES */
-@media (max-width: 768px) {
+@media (max-width: 767px) {
   .triangle {
     display: none !important;
   }
 
+  .centered {
+    display: flex;
+    justify-content: center;
+    align-items: end;
+  }
+
   .major-mono-display {
-    font-size: 25px;
+    font-size: 46px;
   }
 
   .rubik {
@@ -157,11 +163,15 @@
 
   .press-start-2p {
     font-size: 12px;
-    line-height: 12px;
+    line-height: 16px;
   }
 
   .knewave {
     font-size: 14px;
+  }
+
+  .knewave#ask{
+    font-size: 2.3rem;
   }
 
   .knewave-selected {
@@ -171,5 +181,39 @@
   .corrupted-file {
     font-size: 12px;
     line-height: 12px;
+  }
+
+  #main-nav > a#developer:hover {
+    font-family: 'Corrupted File', sans-serif;
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  #main-nav > a#mentor:hover {
+    font-family: "Knewave", system-ui;
+    font-weight: 400;
+    -webkit-text-stroke-width: 1px;
+    -webkit-text-stroke-color: white;
+    color: black;
+    font-size: 14px;
+  }
+
+  #main-nav > a#activist:hover {
+    font-family: "Rubik Glitch", system-ui;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 14px;
+  }
+
+  .question-box {
+    margin-bottom: 4px;
+  }
+}
+
+@media (max-width: 430px) {
+  .major-mono-display {
+    text-align: right;
+    padding-right: 1rem;
+    padding-top: 0;
   }
 }

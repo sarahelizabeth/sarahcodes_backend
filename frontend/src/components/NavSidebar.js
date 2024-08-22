@@ -33,7 +33,7 @@ const sidebar = {
   },
 };
 
-const variants2 = {
+const bottomVariant = {
   open: {
     opacity: 1,
     transition: {
@@ -56,7 +56,7 @@ export const NavSidebar = () => {
     API.post(`api/auth/logout/`, {
       headers: { Authorization: `Bearer ${access_token}` },
     })
-      .then((response) => {
+      .then((res) => {
         Cookies.remove('access_token');
         Cookies.remove('refresh_token');
         localStorage.removeItem('user');
@@ -72,7 +72,7 @@ export const NavSidebar = () => {
     <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>
       <motion.div className='background' variants={sidebar} />
       <Navigation />
-      <motion.div variants={variants2} className={`nav-bottom`}>
+      <motion.div variants={bottomVariant} className={`nav-bottom`}>
         <button onClick={handleLogout}>Logout</button>
       </motion.div>
       <NavToggle toggle={() => toggleOpen()} />

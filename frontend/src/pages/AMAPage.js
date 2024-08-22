@@ -31,9 +31,9 @@ const AMAPage = ({ handleOpenRegister, handleOpenLogin }) => {
   return (
     <>
       <section className='w-screen h-screen grid grid-rows-4 md:grid-cols-2'>
-        <div className='w-full h-full md:h-screen row-span-1 centered flex-row md:flex-col sticky top-0 overflow-hidden bg-black text-white'>
-          <div className='w-2/3'>
-            <h1 className='knewave text-white text-center'>Ask Me Anything!</h1>
+        <div className='w-full h-full md:h-screen row-span-2 centered flex-row md:flex-col sticky top-0 overflow-hidden bg-black text-white'>
+          <div className='w-3/4 md:w-2/3'>
+            <h1 id='ask' className='knewave text-white text-center'>Ask Me Anything!</h1>
             {userContext.user == null ? (
               <>
                 <p className='py-2'>Sign up or log in to ask me a question or leave a comment!</p>
@@ -54,7 +54,7 @@ const AMAPage = ({ handleOpenRegister, handleOpenLogin }) => {
               </>
             ) : (
               <>
-                <p className='mt-5 mb-3 px-10 mb-2 text-justify text-xs'>
+                <p className='mt-1 md:mt-5 mb-3 md:px-10 text-justify text-xs'>
                   Enter your query below and you will receive an email notification as soon as I answer it!
                 </p>
                 <QuestionForm submitQuestion={handleSuccess} />
@@ -62,7 +62,7 @@ const AMAPage = ({ handleOpenRegister, handleOpenLogin }) => {
             )}
           </div>
         </div>
-        <div className='w-full h-full md:h-screen row-span-3 overflow-y-scroll p-20'>
+        <div className='w-full h-full md:h-screen row-span-3 overflow-y-scroll p-8 md:p-20'>
           <QuestionsContext.Provider value={questions}>
             <Questions submitComment={() => setCommentSubmitted(!commentSubmitted)} />
           </QuestionsContext.Provider>

@@ -14,7 +14,7 @@ const Mentor = () => {
 
   return (
     <>
-      <div className='mb-6'>
+      <div className='mt-1 md:mt-4 mb-8'>
         <h6 className='mb-2'>PERSONAL STATEMENT</h6>
         <p>This is my personal statement for the mentor page.</p>
       </div>

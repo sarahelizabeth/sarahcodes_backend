@@ -1,11 +1,11 @@
-import React, { useContext, useRef } from 'react';
-import { useState, useEffect } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
 import { Divider, useToaster } from 'rsuite';
 import { QuestionsContext } from '../pages/AMAPage';
 import QuestionItem from './blog/QuestionItem';
 import AnswerItem from './blog/AnswerItem';
 import CommentItem from './blog/CommentItem';
 import CommentForm from './blog/CommentForm';
+import CommentBlock from './blog/CommentBlock';
 import { BiCommentAdd } from 'react-icons/bi';
 import { MdOutlineInsertComment } from 'react-icons/md';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -56,14 +56,17 @@ const Questions = ({ submitComment }) => {
   );
 
   return (
-    <div className='mt-5'>
+    <div className='m-0 md:mt-5'>
       {questions.toReversed().map((question, index) => (
         <div key={index} className='item'>
           <QuestionItem question={question} />
           {question.answer !== null && <AnswerItem answerId={question.answer} />}
           <div className='comment-container mt-4'>
             <div className='flex justify-between'>
-              <button onClick={() => handleShowComments(index, question.comments.length)} className='flex items-end gap-x-2'>
+              <button
+                onClick={() => handleShowComments(index, question.comments.length)}
+                className='flex items-end gap-x-2'
+              >
                 <MdOutlineInsertComment size={18} />
                 <p className='hover:underline'>
                   {question.comments.length} {`comment${question.comments.length === 1 ? '' : 's'}`}
@@ -75,14 +78,21 @@ const Questions = ({ submitComment }) => {
               </button>
             </div>
             <div className='mt-2'>
-              {(showComments === index) &&
+              {showComments === index &&
                 question.comments.map((comment, index) => (
                   <div key={index}>
                     <CommentItem commentId={comment} />
                   </div>
                 ))}
-              {(showForm === index) && <CommentForm questionId={question.pk} submitComment={() => handleSubmitComment(index)}/>}
+              {showForm === index && (
+                <CommentForm questionId={question.pk} submitComment={() => handleSubmitComment(index)} />
+              )}
             </div>
+            {/* <CommentBlock
+              isVisible={showForm === index}
+              questionId={question.pk}
+              submitComment={() => handleSubmitComment(index)}
+            /> */}
           </div>
           <Divider />
         </div>

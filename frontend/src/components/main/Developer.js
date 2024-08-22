@@ -1,7 +1,8 @@
 import React from 'react';
 import { useState, useEffect } from 'react';
-import DeveloperList from './DeveloperList';
+import ProjectList from './ProjectList';
 import API from '../../api';
+
 
 import { FaAws, FaDocker, FaGithub, FaHtml5, FaNode, FaPython, FaReact, FaSass, FaVuejs } from 'react-icons/fa';
 import { SiDjango, SiTailwindcss, SiNextdotjs, SiTypescript } from 'react-icons/si';
@@ -11,9 +12,7 @@ import StackTooltip from './StackTooltip';
 
 const Developer = () => {
   const [projects, setProjects] = useState([]);
-
   
-
   useEffect(() => {
     API.get(`api/portfolio/projects/?project_type=developer`).then((res) => {
       console.log(res.data)
@@ -23,11 +22,11 @@ const Developer = () => {
 
   return (
     <>
-      <div className='mb-6'>
+      <div className='mt-1 md:mt-4 mb-8'>
         <h6 className='mb-2'>PERSONAL STATEMENT</h6>
         <p>This is my personal statement for the developer page.</p>
       </div>
-      <div className='mb-6'>
+      <div className='mb-8'>
         <h6 className='mb-3'>STACK</h6>
         <div className='stack-grid grid grid-cols-5 w-full gap-2'>
           <StackTooltip placement='left' text='React' icon={<FaReact size={35} />} />
@@ -48,7 +47,7 @@ const Developer = () => {
         </div>
       </div>
       <h6 className='mb-3'>PROJECTS</h6>
-      <DeveloperList projects={projects} />
+      <ProjectList projects={projects} />
     </>
   );
 };
