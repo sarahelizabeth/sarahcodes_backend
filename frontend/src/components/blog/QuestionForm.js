@@ -4,7 +4,7 @@ import { Input } from 'rsuite';
 import API from '../../api';
 
 const QuestionForm = ({ submitQuestion }) => {
-  const user = useContext(UserContext);
+  const userContext = useContext(UserContext);
   const [input, setInput] = useState('');
 
   const handleSubmit = () => {
@@ -15,7 +15,7 @@ const QuestionForm = ({ submitQuestion }) => {
 
     const questionValue = {
       body: input,
-      author: user.pk,
+      author: userContext.user.pk,
     };
 
     API.post(`api/blog/questions/`, questionValue)

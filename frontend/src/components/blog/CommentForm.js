@@ -4,7 +4,7 @@ import API from '../../api';
 import { UserContext } from '../../App';
 
 const CommentForm = ({ questionId, submitComment }) => {
-  const user = useContext(UserContext);
+  const userContext = useContext(UserContext);
   const [input, setInput] = useState('');
 
   const handleSubmit = () => {
@@ -15,7 +15,7 @@ const CommentForm = ({ questionId, submitComment }) => {
 
     const commentValue = {
       body: input,
-      author: user.pk,
+      author: userContext.user.pk,
       question: questionId,
     };
 
