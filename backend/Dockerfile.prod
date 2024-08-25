@@ -1,0 +1,37 @@
+FROM python:3.10-slim
+
+# create the appropriate directories
+# idk if i need this?
+# Check with this Docker + Django + nginx tutorial:
+#   => tutorial: https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/#static-files
+#   => code: https://github.com/testdrivenio/django-on-docker/blob/main/app/Dockerfile.prod
+# ENV APP_DIR=/app/backend
+# RUN mkdir $APP_DIR
+# RUN mkdir $APP_DIR/staticfiles
+# RUN mkdir $APP_DIR/mediafiles
+# WORKDIR $APP_DIR
+# should this be /app or /app/backend?
+WORKDIR /app/backend
+
+RUN apt-get update && apt-get install -y \
+    libpq-dev gcc
+
+COPY requirements.txt requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
+
+COPY . /app/backend/
+
+# Make entrypoint script accessible from app/backend
+COPY entrypoint.sh /app/backend/
+
+# Make the entrypoint script executable.
+RUN chmod +x /app/backend/entrypoint.sh
+
+# Expose port 8000.
+EXPOSE 8000
+
+# Set the entrypoint to run the entrypoint script.
+ENTRYPOINT ["sh", "/app/backend/entrypoint.sh"]
+
+# Use gunicorn to serve the application in production.
+CMD ["gunicorn", "--bind", "0.0.0.0:8000", "backend.wsgi:application"]
