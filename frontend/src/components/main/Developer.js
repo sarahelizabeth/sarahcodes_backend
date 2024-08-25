@@ -24,7 +24,12 @@ const Developer = () => {
     <>
       <div className='mt-1 md:mt-4 mb-8'>
         <h6 className='mb-2'>PERSONAL STATEMENT</h6>
-        <p>This is my personal statement for the developer page.</p>
+        <p>
+          With 8 years of professional experience in full-stack development and 10+ years
+          of writing code, I have a strong foundation in creating sophisticated, robust, 
+          user-centric applications. I have a deep respect for the power of technology to 
+          amplify people's voices, channel their creativity, and change lives.
+        </p>
       </div>
       <div className='mb-8'>
         <h6 className='mb-3'>STACK</h6>

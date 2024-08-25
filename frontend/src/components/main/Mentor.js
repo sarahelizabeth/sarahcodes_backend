@@ -16,7 +16,12 @@ const Mentor = () => {
     <>
       <div className='mt-1 md:mt-4 mb-8'>
         <h6 className='mb-2'>PERSONAL STATEMENT</h6>
-        <p>This is my personal statement for the mentor page.</p>
+        <p>
+          There are few things that get me more excited than sharing my knowledge of 
+          and love for technology with others, whether that be in the capacity of mentor, 
+          teacher, or coworker, i feel privileged to have the opportunity yo change lives
+          by inducing learning .
+        </p>
       </div>
       <h6 className='mb-3'>EXPERIENCES</h6>
       <MentorList projects={projects} />
