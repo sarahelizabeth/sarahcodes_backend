@@ -48,7 +48,7 @@ INSTALLED_APPS = [
     'django.contrib.sites',
     'django.contrib.messages',
     # Whitenoise DEV ONLY - CHANGE FOR PROD
-    'whitenoise.runserver_nostatic',
+    # 'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # Third party
     'corsheaders',
@@ -70,7 +70,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
+    # 'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -173,9 +173,6 @@ if USE_S3:
         'default': {
             'BACKEND': 'storages.backends.s3.S3Storage',
         },
-        'staticfiles': {
-            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
-        }
     }
 else:
     # Development/local media settings
@@ -186,15 +183,15 @@ else:
     STATIC_ROOT = BASE_DIR / 'staticfiles'
     STATICFILES_DIRS = [BASE_DIR / 'static']
     # Development/local storage backends
-    STORAGES = {
-        'default': {
-            'BACKEND': 'django.core.files.storage.FileSystemStorage',
-        },
-        'staticfiles': {
-            # 'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
-            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
-        },
-    }
+    # DO NOT NEED THIS...?
+    # STORAGES = {
+    #     'default': {
+    #         'BACKEND': 'django.core.files.storage.FileSystemStorage',
+    #     },
+    #     'staticfiles': {
+    #         'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+    #     },
+    # }
 
 
 # Default primary key field type
