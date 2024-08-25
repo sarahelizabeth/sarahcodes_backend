@@ -30,12 +30,9 @@ SECRET_KEY = env('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env.bool('DJANGO_DEBUG')
 
-# ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
-# ALLOWED_HOSTS = [] if not any(ALLOWED_HOSTS) else ALLOWED_HOSTS
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sarahcodes.xyz']
+ALLOWED_HOSTS = []
 
-# why the fuck did i have this???
-# WEBSITE_URL = 'http://localhost:8000/'
+WEBSITE_URL = 'http://localhost:8000/'
 
 
 # Application definition
@@ -47,8 +44,6 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.sites',
     'django.contrib.messages',
-    # Whitenoise DEV ONLY - CHANGE FOR PROD
-    'whitenoise.runserver_nostatic',
     'django.contrib.staticfiles',
     # Third party
     'corsheaders',
@@ -148,53 +143,14 @@ USE_TZ = True
 
 
 # Static files (CSS, JavaScript, Images)
-#   => https://docs.djangoproject.com/en/4.2/howto/static-files/
-# Media uploads (Files, Images, User-generated content)
-#   => https://testdriven.io/blog/storing-django-static-and-media-files-on-amazon-s3/
+# https://docs.djangoproject.com/en/4.2/howto/static-files/
 
-USE_S3 = env.bool('USE_S3')
+STATIC_URL = 'static/'
 
-if USE_S3:
-    # AWS settings
-    AWS_ACCESS_KEY_ID = env('AWS_ACCESS_KEY_ID')
-    AWS_SECRET_ACCESS_KEY = env('AWS_SECRET_ACCESS_KEY')
-    AWS_STORAGE_BUCKET_NAME = env('AWS_STORAGE_BUCKET_NAME')
-    AWS_S3_REGION_NAME = env('AWS_S3_REGION_NAME')
-    AWS_DEFAULT_ACL = 'public-read'
-    # S3 media settings
-    MEDIA_URL = '/mediafiles/'
-    MEDIA_ROOT = BASE_DIR / 'mediafiles'
-    # Whitenoise static settings
-    STATIC_URL = '/staticfiles/'
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    STATICFILES_DIRS = [BASE_DIR / 'static']
-    # Storage backends for S3 and Whitenoise
-    STORAGES = {
-        'default': {
-            'BACKEND': 'storages.backends.s3.S3Storage',
-        },
-        'staticfiles': {
-            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
-        }
-    }
-else:
-    # Development/local media settings
-    MEDIA_URL = '/mediafiles/'
-    MEDIA_ROOT = BASE_DIR / 'mediafiles'
-    # Whitenoise static settings
-    STATIC_URL = '/staticfiles/'
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    STATICFILES_DIRS = [BASE_DIR / 'static']
-    # Development/local storage backends
-    STORAGES = {
-        'default': {
-            'BACKEND': 'django.core.files.storage.FileSystemStorage',
-        },
-        'staticfiles': {
-            # 'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
-            'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
-        },
-    }
+
+# Media uploads (files/images)
+MEDIA_URL = '/media/'
+MEDIA_ROOT = BASE_DIR / 'media'
 
 
 # Default primary key field type
@@ -254,8 +210,6 @@ else:
     CORS_ALLOWED_ORIGINS = [
         'http://localhost:3000/',
         'http://127.0.0.1:3000/',
-        'http://www.sarahcodes.xyz/',
-        'http://sarahcodes.xyz/'
     ]
 
 SOCIALACCOUNT_PROVIDERS = {
