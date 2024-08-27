@@ -36,7 +36,7 @@ ALLOWED_HOSTS = [
     'localhost', 
     '127.0.0.1', 
     'sarahcodes.xyz', 
-    '159.89.91.160',
+    '157.230.49.128',
 ]
 
 # why the fuck did i have this???
@@ -250,10 +250,10 @@ else:
         'http://127.0.0.1:3000',
         'http://www.sarahcodes.xyz',
         'http://sarahcodes.xyz',
-        'http://159.89.91.160:8000',
-        'http://159.89.91.160',
-        'http://159.89.91.160:1337',
-        'http://159.89.91.160:80',
+        'http://157.230.49.128:8000',
+        'http://157.230.49.128',
+        'http://157.230.49.128:1337',
+        'http://157.230.49.128:80',
     ]
 
 SOCIALACCOUNT_PROVIDERS = {
