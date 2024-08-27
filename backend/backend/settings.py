@@ -32,7 +32,12 @@ DEBUG = env.bool('DJANGO_DEBUG')
 
 # ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 # ALLOWED_HOSTS = [] if not any(ALLOWED_HOSTS) else ALLOWED_HOSTS
-ALLOWED_HOSTS = ['localhost', '127.0.0.1', 'sarahcodes.xyz']
+ALLOWED_HOSTS = [
+    'localhost', 
+    '127.0.0.1', 
+    'sarahcodes.xyz', 
+    '159.89.91.160',
+]
 
 # why the fuck did i have this???
 # WEBSITE_URL = 'http://localhost:8000/'
@@ -167,31 +172,23 @@ if USE_S3:
     # Whitenoise static settings
     STATIC_URL = '/staticfiles/'
     STATIC_ROOT = BASE_DIR / 'staticfiles'
-    STATICFILES_DIRS = [BASE_DIR / 'static']
+    # STATICFILES_DIRS = [BASE_DIR / 'static']
     # Storage backends for S3 and Whitenoise
     STORAGES = {
         'default': {
             'BACKEND': 'storages.backends.s3.S3Storage',
         },
+        'staticfiles': {
+            'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
+            # 'BACKEND': 'whitenoise.storage.CompressedManifestStaticFilesStorage',
+        }
     }
 else:
     # Development/local media settings
     MEDIA_URL = '/mediafiles/'
     MEDIA_ROOT = BASE_DIR / 'mediafiles'
-    # Whitenoise static settings
+    # Local static settings
     STATIC_URL = '/staticfiles/'
-    STATIC_ROOT = BASE_DIR / 'staticfiles'
-    STATICFILES_DIRS = [BASE_DIR / 'static']
-    # Development/local storage backends
-    # DO NOT NEED THIS...?
-    # STORAGES = {
-    #     'default': {
-    #         'BACKEND': 'django.core.files.storage.FileSystemStorage',
-    #     },
-    #     'staticfiles': {
-    #         'BACKEND': 'django.contrib.staticfiles.storage.StaticFilesStorage',
-    #     },
-    # }
 
 
 # Default primary key field type
@@ -249,10 +246,14 @@ if DEBUG:
     CORS_ALLOW_ALL_ORIGINS = True
 else:
     CORS_ALLOWED_ORIGINS = [
-        'http://localhost:3000/',
-        'http://127.0.0.1:3000/',
-        'http://www.sarahcodes.xyz/',
-        'http://sarahcodes.xyz/'
+        'http://localhost:3000',
+        'http://127.0.0.1:3000',
+        'http://www.sarahcodes.xyz',
+        'http://sarahcodes.xyz',
+        'http://159.89.91.160:8000',
+        'http://159.89.91.160',
+        'http://159.89.91.160:1337',
+        'http://159.89.91.160:80',
     ]
 
 SOCIALACCOUNT_PROVIDERS = {

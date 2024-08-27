@@ -25,6 +25,9 @@ services:
     volumes:
       - ./frontend:/app/frontend
 
+    environment:
+      - API_URL=localhost
+
     depends_on:
       - backend
 
