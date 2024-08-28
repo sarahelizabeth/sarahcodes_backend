@@ -22,7 +22,7 @@ services:
     volumes:
       - frontend_build:/frontend/build
     ports:
-      - "1337:80"
+      - "80:80"
     depends_on:
       - backend
 
