@@ -46,12 +46,12 @@ const Login = ({ isOpen, handleClose }) => {
   };
 
   return (
-    <Modal fluid='true' size='sm' open={isOpen} onClose={handleClose}>
+    <Modal size='sm' open={isOpen} onClose={handleClose}>
       <Modal.Header>
         <Modal.Title>Log In</Modal.Title>
       </Modal.Header>
       <Modal.Body>
-        <Form ref={form} model={model} onChange={setFormValue} formValue={formValue}>
+        <Form fluid ref={form} model={model} onChange={setFormValue} formValue={formValue}>
           <Form.Group controlId='email'>
             <Form.ControlLabel>Email</Form.ControlLabel>
             <Form.Control name='email' />

@@ -71,6 +71,7 @@ INSTALLED_APPS = [
     'authentication',
     'blog',
     'portfolio',
+    'bookshelf',
 ]
 
 MIDDLEWARE = [

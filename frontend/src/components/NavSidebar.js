@@ -45,7 +45,7 @@ const bottomVariant = {
   },
 };
 
-export const NavSidebar = () => {
+export const NavSidebar = ({ handleOpenLogin, handleOpenRegister, handleOpenContact }) => {
   const [isOpen, toggleOpen] = useCycle(false, true);
   const containerRef = useRef(null);
   const { height } = useDimensions(containerRef);
@@ -68,12 +68,30 @@ export const NavSidebar = () => {
       });
   };
 
+  const openLogin = () => {
+    handleOpenLogin();
+    toggleOpen();
+  };
+
+  const openRegister = () => {
+    handleOpenRegister();
+    toggleOpen();
+  };
+
+  const openContact = () => {
+    handleOpenContact();
+    toggleOpen();
+  };
+
   return (
     <motion.nav initial={false} animate={isOpen ? 'open' : 'closed'} custom={height} ref={containerRef}>
       <motion.div className='background' variants={sidebar} />
       <Navigation />
       <motion.div variants={bottomVariant} className={`nav-bottom`}>
         <button onClick={handleLogout}>Logout</button>
+        <button onClick={openLogin}>Login</button>
+        <button onClick={openRegister}>Sign Up</button>
+        <button onClick={openContact}>Contact</button>
       </motion.div>
       <NavToggle toggle={() => toggleOpen()} />
     </motion.nav>

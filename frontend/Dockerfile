@@ -5,8 +5,8 @@ WORKDIR /app/frontend/
 COPY package*.json /app/frontend/
 RUN npm install
 
-ARG API_URL
-ENV AXIOS_URL=$API_URL
+ARG REACT_APP_API_URL
+ENV REACT_APP_API_URL=$REACT_APP_API_URL
 
 COPY . /app/frontend/
 
