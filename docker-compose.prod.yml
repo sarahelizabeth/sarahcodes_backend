@@ -33,7 +33,7 @@ services:
     volumes:
       - media_volume:/usr/src/backend/mediafiles
     depends_on:
-      - backend
+      - web
 
 volumes:
   postgres_data:
