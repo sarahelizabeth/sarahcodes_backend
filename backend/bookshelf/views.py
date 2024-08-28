@@ -8,7 +8,7 @@ class MediaViewSet(viewsets.ModelViewSet):
   queryset = Media.objects.all()
   serializer_class = MediaSerializer
   filter_backends = [DjangoFilterBackend]
-  filterset_fields = ['media_type']
+  filterset_fields = ['media_type', 'visible']
 
 class LikeViewSet(viewsets.ModelViewSet):
   queryset = Like.objects.all()

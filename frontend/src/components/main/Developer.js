@@ -14,10 +14,11 @@ const Developer = () => {
   const [projects, setProjects] = useState([]);
   
   useEffect(() => {
-    API.get(`/api/portfolio/projects/?project_type=developer`).then((res) => {
-      console.log(res.data)
-      setProjects(res.data);
-    });
+    API.get(`/api/portfolio/projects/?project_type=developer`)
+      .then((res) => {
+        setProjects(res.data);
+      })
+      .catch(error => console.error('developer list error: ', error));
   }, []);
 
   return (

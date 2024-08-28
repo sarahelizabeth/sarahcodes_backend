@@ -11,6 +11,10 @@ const navigation = [
     link: '/ama',
   },
   {
+    title: 'Bookshelf',
+    link: '/bookshelf',
+  },
+  {
     title: 'Contact',
     link: '/contact',
   },

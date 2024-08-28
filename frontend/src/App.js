@@ -13,6 +13,10 @@ import Developer from './components/main/Developer';
 import Mentor from './components/main/Mentor';
 import Activist from './components/main/Activist';
 import Contact from './components/Contact';
+import BookshelfPage from './pages/BookshelfPage';
+import Books from './components/bookshelf/Books';
+import Films from './components/bookshelf/Films';
+import Articles from './components/bookshelf/Articles';
 
 export const UserContext = createContext();
 
@@ -48,7 +52,29 @@ function App() {
     },
     {
       path: '/ama',
-      element: <AMAPage handleOpenLogin={() => setOpenLogin(true)} handleOpenRegister={() => setOpenRegister(true)}/>,
+      element: <AMAPage handleOpenLogin={() => setOpenLogin(true)} handleOpenRegister={() => setOpenRegister(true)} />,
+    },
+    {
+      path: '/bookshelf',
+      element: <BookshelfPage />,
+      children: [
+        {
+          index: true,
+          element: <Intro />,
+        },
+        {
+          path: 'books',
+          element: <Books />,
+        },
+        {
+          path: 'films',
+          element: <Films />,
+        },
+        {
+          path: 'articles',
+          element: <Articles />,
+        },
+      ],
     },
   ]);
 

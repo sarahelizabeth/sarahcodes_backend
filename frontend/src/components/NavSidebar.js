@@ -88,9 +88,14 @@ export const NavSidebar = ({ handleOpenLogin, handleOpenRegister, handleOpenCont
       <motion.div className='background' variants={sidebar} />
       <Navigation />
       <motion.div variants={bottomVariant} className={`nav-bottom`}>
-        <button onClick={handleLogout}>Logout</button>
-        <button onClick={openLogin}>Login</button>
-        <button onClick={openRegister}>Sign Up</button>
+        {userContext.user ? (
+          <button onClick={handleLogout}>Logout</button>
+        ) : (
+          <>
+            <button onClick={openLogin}>Login</button>
+            <button onClick={openRegister}>Sign Up</button>
+          </>
+        )}
         <button onClick={openContact}>Contact</button>
       </motion.div>
       <NavToggle toggle={() => toggleOpen()} />
