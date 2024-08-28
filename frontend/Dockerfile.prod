@@ -9,6 +9,7 @@ COPY . /app/frontend/
 
 ENV GENERATE_SOURCEMAP false
 
+RUN npm run build; exit 0
 RUN npm run build
 
 # official Docker guide for React + nginx => 
