@@ -10,7 +10,6 @@ services:
     environment:
       - POSTGRES_HOST=db
     volumes:
-      - ./backend/:/usr/src/backend/
       - media_volume:/usr/src/backend/mediafiles
     ports:
       - "8000:8000"
