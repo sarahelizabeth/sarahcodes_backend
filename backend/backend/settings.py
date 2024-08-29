@@ -274,15 +274,25 @@ else:
         'http://24.144.104.232:3000',
     ]
 
-    CSRF_TRUSTED_ORIGINS = [
-        'http://127.0.0.1:8000',
-        'http://127.0.0.1:3000',
-        'http://localhost:8000',
-        'http://localhost:3000',
-        'http://24.144.104.232',
-        'http://24.144.104.232:1337'
-        'http://24.144.104.232:3000',
-    ]
+CSRF_TRUSTED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
+    'http://localhost:3000',
+    'http://24.144.104.232',
+    'http://24.144.104.232:1337'
+    'http://24.144.104.232:3000',
+]
+
+CSRF_ALLOWED_ORIGINS = [
+    'http://127.0.0.1:8000',
+    'http://127.0.0.1:3000',
+    'http://localhost:8000',
+    'http://localhost:3000',
+    'http://24.144.104.232',
+    'http://24.144.104.232:1337'
+    'http://24.144.104.232:3000',
+]
 
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
