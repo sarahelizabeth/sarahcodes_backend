@@ -11,6 +11,7 @@ services:
       - POSTGRES_HOST=db
     volumes:
       - media_volume:/usr/src/backend/mediafiles
+      - static_volume:/usr/src/backend/staticfiles
     ports:
       - "8000:8000"
     depends_on:
@@ -24,7 +25,7 @@ services:
       - postgres_data:/var/lib/postgresql/data
     environment:
       - POSTGRES_PASSWORD=postgres
-      - POSTGRES_USER=postgres
+      - POSTGRES_USER=root
       - POSTGRES_DB=postgres
 
   nginx:
@@ -33,10 +34,12 @@ services:
       - "1337:80"
     volumes:
       - media_volume:/usr/src/backend/mediafiles
+      - static_volume:/usr/src/backend/staticfiles
     depends_on:
       - web
 
 volumes:
   postgres_data:
   media_volume:
+  static_volume:
 

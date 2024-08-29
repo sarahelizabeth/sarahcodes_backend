@@ -115,7 +115,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'postgres',
-        'USER': 'postgres',
+        'USER': 'root',
         'PASSWORD': 'postgres',
         'HOST': 'db',
         'PORT': '5432',
@@ -191,6 +191,7 @@ else:
     MEDIA_ROOT = BASE_DIR / 'mediafiles'
     # Local static settings
     STATIC_URL = '/staticfiles/'
+    STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 # Default primary key field type
