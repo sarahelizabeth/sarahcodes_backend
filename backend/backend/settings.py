@@ -245,24 +245,24 @@ REST_AUTH = {
     'JWT_AUTH_HTTPONLY': False,
 }
 
-if DEBUG:
-    CORS_ALLOW_ALL_ORIGINS = True
-else:
-    CORS_ALLOWED_ORIGINS = [
-        'http://localhost:3000',
-        'http://127.0.0.1:3000',
-        'http://www.sarahcodes.xyz',
-        'http://sarahcodes.xyz',
-        'http://157.230.49.128:8000',
-        'http://157.230.49.128',
-        'http://157.230.49.128:1337',
-        'http://157.230.49.128:80',
-        'http://24.144.104.232',
-        'http://24.144.104.232:1337',
-        'http://24.144.104.232:8000',
-        'http://24.144.104.232:3000',
-        'http://24.144.104.232:80',
-    ]
+# if DEBUG:
+#     CORS_ALLOW_ALL_ORIGINS = True
+# else:
+CORS_ALLOWED_ORIGINS = [
+    'http://localhost:3000',
+    'http://127.0.0.1:3000',
+    'http://www.sarahcodes.xyz',
+    'http://sarahcodes.xyz',
+    'http://157.230.49.128:8000',
+    'http://157.230.49.128',
+    'http://157.230.49.128:1337',
+    'http://157.230.49.128:80',
+    'http://24.144.104.232',
+    'http://24.144.104.232:1337',
+    'http://24.144.104.232:8000',
+    'http://24.144.104.232:3000',
+    'http://24.144.104.232:80',
+]
 
 CORS_ORIGINS_WHITELIST = [
     'http://127.0.0.1:8000',
