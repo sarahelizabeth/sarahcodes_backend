@@ -7,6 +7,8 @@ services:
       dockerfile: Dockerfile.prod
     env_file:
       - ./backend/.env.prod
+    environment:
+      - POSTGRES_HOST=db
     volumes:
       - ./backend/:/usr/src/backend/
       - media_volume:/usr/src/backend/mediafiles

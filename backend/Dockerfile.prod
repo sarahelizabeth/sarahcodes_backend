@@ -23,9 +23,11 @@ COPY . /usr/src/backend/
 
 # Make entrypoint script accessible from app/backend
 COPY entrypoint.sh /usr/src/backend/
+COPY wait-for-it.sh /usr/src/backend/
 
 # Make the entrypoint script executable.
-RUN chmod +x /usr/src/backend/entrypoint.sh
+# RUN chmod +x /usr/src/backend/entrypoint.sh
+RUN chmod +x ./wait-for-it.sh ./entrypoint.sh
 
 # Expose port 8000.
 EXPOSE 8000
