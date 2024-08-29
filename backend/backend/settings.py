@@ -294,6 +294,8 @@ CSRF_ALLOWED_ORIGINS = [
     'http://24.144.104.232:3000',
 ]
 
+SECURE_CROSS_ORIGIN_OPENER_POLICY = None
+
 SOCIALACCOUNT_PROVIDERS = {
     'google': {
         'APP': {
