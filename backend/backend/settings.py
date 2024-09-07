@@ -40,6 +40,8 @@ ALLOWED_HOSTS = [
     '24.144.104.232',
     '86.38.203.9',
     'www.baidu.com',
+    '192.168.0.29:1337',
+    '192.168.0.29:8000',
 ]
 
 # why the fuck did i have this???
@@ -265,6 +267,7 @@ CORS_ALLOWED_ORIGINS = [
     'http://86.38.203.9:8000',
     'http://86.38.203.9:3000',
     'http://86.38.203.9:80',
+    'http://192.168.0.29:1337'
 ]
 
 CORS_ORIGINS_WHITELIST = [
@@ -280,6 +283,7 @@ CORS_ORIGINS_WHITELIST = [
     'http://86.38.203.9:8000',
     'http://86.38.203.9:3000',
     'http://86.38.203.9:80',
+    'http://192.168.0.29:1337'
 ]
 
 CSRF_TRUSTED_ORIGINS = [
@@ -295,6 +299,8 @@ CSRF_TRUSTED_ORIGINS = [
     'http://86.38.203.9:8000',
     'http://86.38.203.9:3000',
     'http://86.38.203.9:80',
+    'http://localhost:1337',
+    'http://192.168.0.29:1337'
 ]
 
 CSRF_ALLOWED_ORIGINS = [
@@ -310,6 +316,8 @@ CSRF_ALLOWED_ORIGINS = [
     'http://86.38.203.9:8000',
     'http://86.38.203.9:3000',
     'http://86.38.203.9:80',
+    'http://localhost:1337',
+    'http://192.168.0.29:1337'
 ]
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
