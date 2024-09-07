@@ -33,15 +33,23 @@ DEBUG = env.bool('DJANGO_DEBUG')
 # why is this not working??
 # ALLOWED_HOSTS = env('ALLOWED_HOSTS').split(',')
 # ALLOWED_HOSTS = [] if not any(ALLOWED_HOSTS) else ALLOWED_HOSTS
+
+# ALLOWED_HOSTS defines the list of valid domains or IP addresses that can serve your Django application.
+# Requests with Host headers that do not match an entry here will be denied.
+# You need to include all domains or IPs that might be used to access the app (e.g., production, staging, or local).
 ALLOWED_HOSTS = [
-    'localhost', 
-    '127.0.0.1', 
-    'sarahcodes.xyz', 
-    '24.144.104.232',
-    '86.38.203.9',
-    'www.baidu.com',
-    '192.168.0.29:1337',
-    '192.168.0.29:8000',
+    'localhost',            # Local development access via localhost
+    '127.0.0.1',            # Local development access via loopback IP
+    'sarahcodes.xyz',       # Primary production domain for the frontend
+    'api.sarahcodes.xyz',   # API domain, see _notes/notes.md for more info
+    'admin.sarahcodes.xyz', # Admin panel domain, see _notes/notes.md for more info
+    '24.144.104.232',       # Public IP address of the production server
+    '86.38.203.9',          # Alternative IP address used for staging or another environment
+    'www.baidu.com',        # Example entry (ensure this is relevant, possibly remove if not needed)
+
+    # This entry is crucial for Docker networking. When Django runs inside a container,
+    # it will refer to itself as 'web:8000' when accessed via the internal Docker network.
+    'web:8000',
 ]
 
 # why the fuck did i have this???
@@ -252,6 +260,9 @@ REST_AUTH = {
 # if DEBUG:
 #     CORS_ALLOW_ALL_ORIGINS = True
 # else:
+
+# CORS_ALLOWED_ORIGINS is used to specify the origins allowed to make cross-origin requests to the Django API.
+# This setting is mainly for APIs (usually JavaScript-based apps on different domains or ports) making requests.
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
     'http://127.0.0.1:3000',
@@ -267,9 +278,14 @@ CORS_ALLOWED_ORIGINS = [
     'http://86.38.203.9:8000',
     'http://86.38.203.9:3000',
     'http://86.38.203.9:80',
-    'http://192.168.0.29:1337'
+    'http://192.168.0.29:1337',
+
+    # This is the main production domain for the frontend, and it requires HTTPS.
+    'https://sarahcodes.xyz'
 ]
 
+# CORS_ORIGINS_WHITELIST is used to define the origins explicitly allowed to access the Django API.
+# It overlaps with CORS_ALLOWED_ORIGINS but is often used for legacy or specific configurations.
 CORS_ORIGINS_WHITELIST = [
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
@@ -283,9 +299,14 @@ CORS_ORIGINS_WHITELIST = [
     'http://86.38.203.9:8000',
     'http://86.38.203.9:3000',
     'http://86.38.203.9:80',
-    'http://192.168.0.29:1337'
+
+    # These origins require HTTPS, especially for production environments.
+    'https://sarahcodes.xyz',       # Production frontend with HTTPS
+    'https://api.sarahcodes.xyz',   # Production API with HTTPS (if needed)
 ]
 
+# CSRF_TRUSTED_ORIGINS is mainly used for server-side rendered HTML forms (e.g., Django's admin interface).
+# These origins are trusted to perform requests that require CSRF tokens.
 CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
@@ -300,9 +321,13 @@ CSRF_TRUSTED_ORIGINS = [
     'http://86.38.203.9:3000',
     'http://86.38.203.9:80',
     'http://localhost:1337',
-    'http://192.168.0.29:1337'
+
+    # Admin panel for Django requires HTTPS in production.
+    'https://admin.sarahcodes.xyz',     # Admin panel in production (ensure TLS termination)
 ]
 
+# CSRF_ALLOWED_ORIGINS defines a similar list of trusted origins for CSRF protection.
+# It allows certain origins to bypass the default CSRF protections, generally used for server-rendered HTML.
 CSRF_ALLOWED_ORIGINS = [
     'http://127.0.0.1:8000',
     'http://127.0.0.1:3000',
@@ -317,7 +342,9 @@ CSRF_ALLOWED_ORIGINS = [
     'http://86.38.203.9:3000',
     'http://86.38.203.9:80',
     'http://localhost:1337',
-    'http://192.168.0.29:1337'
+
+    # Admin panel needs secure origins (HTTPS).
+    'https://admin.sarahcodes.xyz',  # Admin panel with HTTPS in production
 ]
 
 SECURE_CROSS_ORIGIN_OPENER_POLICY = None
