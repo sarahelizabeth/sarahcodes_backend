@@ -39,6 +39,7 @@ ALLOWED_HOSTS = [
     'sarahcodes.xyz', 
     '24.144.104.232',
     '86.38.203.9',
+    'www.baidu.com',
 ]
 
 # why the fuck did i have this???
