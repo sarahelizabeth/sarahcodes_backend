@@ -265,6 +265,7 @@ REST_AUTH = {
 # This setting is mainly for APIs (usually JavaScript-based apps on different domains or ports) making requests.
 CORS_ALLOWED_ORIGINS = [
     'http://localhost:3000',
+    'http://localhost:5173',
     'http://127.0.0.1:3000',
     'http://www.sarahcodes.xyz',
     'http://sarahcodes.xyz',
@@ -291,9 +292,11 @@ CORS_ORIGINS_WHITELIST = [
     'http://127.0.0.1:3000',
     'http://localhost:8000',
     'http://localhost:3000',
+    'http://localhost:5173',
     'http://24.144.104.232',
     'http://24.144.104.232:1337'
     'http://24.144.104.232:3000',
+    'http://24.144.104.232:8000',
     'http://86.38.203.9',
     'http://86.38.203.9:1337',
     'http://86.38.203.9:8000',
@@ -312,6 +315,7 @@ CSRF_TRUSTED_ORIGINS = [
     'http://127.0.0.1:3000',
     'http://localhost:8000',
     'http://localhost:3000',
+    'http://localhost:5173',
     'http://24.144.104.232',
     'http://24.144.104.232:1337'
     'http://24.144.104.232:3000',
@@ -333,6 +337,7 @@ CSRF_ALLOWED_ORIGINS = [
     'http://127.0.0.1:3000',
     'http://localhost:8000',
     'http://localhost:3000',
+    'http://localhost:5173',
     'http://24.144.104.232',
     'http://24.144.104.232:1337'
     'http://24.144.104.232:3000',

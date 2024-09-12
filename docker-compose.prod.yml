@@ -32,6 +32,12 @@ services:
     build: ./nginx
     ports:
       - "1337:80"
+      # maybe this should be:
+      - "80:80" # HTTP port
+      # or:
+      - "443:443" # HTTPS port
+      # or:
+      - "81:81" # Admin web port (?)
     volumes:
       - media_volume:/usr/src/backend/mediafiles
       - static_volume:/usr/src/backend/staticfiles
