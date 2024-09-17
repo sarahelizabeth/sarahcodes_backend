@@ -30,10 +30,10 @@ class Pet(models.Model):
 
 def get_file_path_image(instance, filename):
   filename_clean = filename.replace('_', ' ')
-  uuid_clean = str(instance.id)
+  pet_id = str(instance.pet.pk)
   return os.path.join(
     'pet_images',
-    uuid_clean,
+    pet_id,
     filename_clean
   )
 
