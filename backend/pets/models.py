@@ -30,9 +30,10 @@ class Pet(models.Model):
 
 def get_file_path_image(instance, filename):
   filename_clean = filename.replace('_', ' ')
+  uuid_clean = str(instance.id)
   return os.path.join(
-    instance.owner,
     'pet_images',
+    uuid_clean,
     filename_clean
   )
 
@@ -47,14 +48,10 @@ class PetImage(models.Model):
     related_name='images',
     on_delete=models.CASCADE
   )
-  owner = models.ForeignKey(
-    get_user_model(),
-    on_delete=models.CASCADE
-  )
   image = models.ImageField(upload_to=get_file_path_image)
   title = models.CharField(max_length=255, blank=True, null=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 
   def __str__(self):
-    return self.author + ' / ' + self.pet.name + ' / ' + self.created_at
+    return self.pet.name
