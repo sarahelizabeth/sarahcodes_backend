@@ -88,8 +88,9 @@ INSTALLED_APPS = [
     # Local
     'authentication',
     'blog',
-    'portfolio',
     'bookshelf',
+    'pets',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
