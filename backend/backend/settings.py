@@ -50,6 +50,11 @@ ALLOWED_HOSTS = [
     # This entry is crucial for Docker networking. When Django runs inside a container,
     # it will refer to itself as 'web:8000' when accessed via the internal Docker network.
     'web:8000',
+
+    # idk why i'm adding these things, but it told me to in the logs
+    '74.63.247.151',
+    'example.com',
+    '0.0.0.0',
 ]
 
 # why the fuck did i have this???

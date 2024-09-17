@@ -1,16 +1,9 @@
 FROM python:3.10-slim
 
-# create the appropriate directories
-# idk if i need this?
+# Create the appropriate directories
 # Check with this Docker + Django + nginx tutorial:
 #   => tutorial: https://testdriven.io/blog/dockerizing-django-with-postgres-gunicorn-and-nginx/#static-files
 #   => code: https://github.com/testdrivenio/django-on-docker/blob/main/app/Dockerfile.prod
-# ENV APP_DIR=/app/backend
-# RUN mkdir $APP_DIR
-# RUN mkdir $APP_DIR/staticfiles
-# RUN mkdir $APP_DIR/mediafiles
-# WORKDIR $APP_DIR
-# should this be /app or /app/backend?
 WORKDIR /usr/src/backend
 
 RUN apt-get update && apt-get install -y \
@@ -22,15 +15,12 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . /usr/src/backend/
 
 # Make entrypoint script accessible from app/backend
-# COPY entrypoint.sh /usr/src/backend/
 COPY wait-for-it.sh /usr/src/backend/
 RUN chmod +x /usr/src/backend/wait-for-it.sh
 
 # Make the entrypoint script executable.
-# RUN chmod +x /usr/src/backend/wait-for-it.sh
 COPY entrypoint.sh /usr/src/backend/
 RUN chmod +x /usr/src/backend/entrypoint.sh
-# RUN chmod +x ./wait-for-it.sh ./entrypoint.sh
 
 # Expose port 8000.
 EXPOSE 8000

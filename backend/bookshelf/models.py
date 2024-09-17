@@ -8,6 +8,7 @@ MEDIA_TYPES = [
   ('film', 'Film'),
   ('app', 'App'),
   ('article', 'Article'),
+  ('video', 'YouTube Video'),
 ]
 
 def get_file_path(instance, filename):
