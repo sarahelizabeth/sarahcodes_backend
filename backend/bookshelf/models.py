@@ -32,7 +32,7 @@ class Media(models.Model):
     null=True,
     blank=True,
   )
-  visible = models.BooleanField(default=False)
+  visible = models.BooleanField(default=True)
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
 

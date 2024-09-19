@@ -13,4 +13,6 @@ class MediaViewSet(viewsets.ModelViewSet):
 class LikeViewSet(viewsets.ModelViewSet):
   queryset = Like.objects.all()
   serializer_class = LikeSerializer
+  filter_backends = [DjangoFilterBackend]
+  filterset_fields = ['media__pk']
 
