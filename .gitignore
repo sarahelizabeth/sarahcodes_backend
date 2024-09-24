@@ -2,3 +2,6 @@ venv/
 .env
 _old/
 .env.local
+.env.production
+.env.dev
+.env.prod
